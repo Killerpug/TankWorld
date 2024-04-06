@@ -9,8 +9,7 @@
 #include <SDL2/SDL.h>
 #include "texture.h"
 
-class Player
-{
+class Player {
 public:
     Player();
 
@@ -23,7 +22,7 @@ public:
     static const int PLAYER_SPEED = 5;
 
 
-    void handleEvent( SDL_Event& e );
+    void handleEvent(SDL_Event &e);
 
     void move();
 
@@ -36,6 +35,7 @@ private:
     int playerHeight;
     int mPosX, mPosY;
     int mVelX, mVelY;
+    double angle;
 
     LTexture playerTexture;
 };
