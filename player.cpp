@@ -19,15 +19,19 @@ void Player::handleEvent(SDL_Event &e) {
         switch (e.key.keysym.sym) {
             case SDLK_UP:
                 mVelY -= PLAYER_SPEED;
+                angle = 0;
                 break;
             case SDLK_DOWN:
                 mVelY += PLAYER_SPEED;
+                angle = 180;
                 break;
             case SDLK_LEFT:
                 mVelX -= PLAYER_SPEED;
+                angle = 270;
                 break;
             case SDLK_RIGHT:
                 mVelX += PLAYER_SPEED;
+                angle = 90;
                 break;
         }
     } else if (e.type == SDL_KEYUP && e.key.repeat == 0) {
@@ -64,7 +68,7 @@ void Player::move() {
 }
 
 void Player::render(SDL_Renderer *gRenderer) {
-    playerTexture.render(mPosX, mPosY, gRenderer);
+    playerTexture.render(mPosX, mPosY, angle, nullptr, nullptr, gRenderer);
 }
 
 Player::Player() {

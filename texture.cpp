@@ -12,9 +12,11 @@ int LTexture::getHeight() { return mHeight; }
 
 // Set rendering space and render to screen.
 // Prerequisite: have a loaded texture.
-void LTexture::render(int x, int y, SDL_Renderer *sRenderer) {
+void LTexture::render(int x, int y, double angle, SDL_Point *center, SDL_Rect *clip,
+                      SDL_Renderer *sRenderer) {
+    SDL_RendererFlip flip = SDL_FLIP_NONE;
     SDL_Rect renderQuad = {x, y, mWidth, mHeight};
-    SDL_RenderCopy(sRenderer, mTexture, NULL, &renderQuad);
+    SDL_RenderCopyEx(sRenderer, mTexture, NULL, &renderQuad, angle, nullptr, flip);
 }
 
 void LTexture::free() {
@@ -29,7 +31,6 @@ void LTexture::free() {
 
 bool LTexture::loadFromFile(const std::string &path, SDL_Renderer *sRenderer) {
     free();                             // Get rid of preexisting texture
-    SDL_Texture *newTexture = NULL;     // The final texture
 
     // Load image
     SDL_Surface *loadedSurface = IMG_Load(path.c_str());
@@ -38,8 +39,8 @@ bool LTexture::loadFromFile(const std::string &path, SDL_Renderer *sRenderer) {
                   << IMG_GetError() << std::endl;
     } else {
         // Create texture from surface pixels
-        newTexture = SDL_CreateTextureFromSurface(sRenderer, loadedSurface);
-        if (newTexture == NULL) {
+        mTexture = SDL_CreateTextureFromSurface(sRenderer, loadedSurface);
+        if (mTexture == NULL) {
             std::cout << "Unable to create texture from %s! SDL Error: "
                       << path.c_str() << " " << SDL_GetError() << std::endl;
         } else {
@@ -53,7 +54,6 @@ bool LTexture::loadFromFile(const std::string &path, SDL_Renderer *sRenderer) {
     }
 
     // Return success
-    mTexture = newTexture;
     return mTexture != NULL;
 }
 
