@@ -16,14 +16,14 @@ void LTexture::render(int x, int y, double angle, SDL_Point *center, SDL_Rect *c
                       SDL_Renderer *sRenderer) {
     SDL_RendererFlip flip = SDL_FLIP_NONE;
     SDL_Rect renderQuad = {x, y, mWidth, mHeight};
-    SDL_RenderCopyEx(sRenderer, mTexture, NULL, &renderQuad, angle, nullptr, flip);
+    SDL_RenderCopyEx(sRenderer, mTexture, nullptr, &renderQuad, angle, nullptr, flip);
 }
 
 void LTexture::free() {
     // Free texture if it exists
-    if (mTexture != NULL) {
+    if (mTexture != nullptr) {
         SDL_DestroyTexture(mTexture);
-        mTexture = NULL;
+        mTexture = nullptr;
         mWidth = 0;
         mHeight = 0;
     }
@@ -34,7 +34,7 @@ bool LTexture::loadFromFile(const std::string &path, SDL_Renderer *sRenderer) {
 
     // Load image
     SDL_Surface *loadedSurface = IMG_Load(path.c_str());
-    if (loadedSurface == NULL) {
+    if (loadedSurface == nullptr) {
         std::cout << "Unable to load image %s! SDL_image Error: " << path.c_str() << " "
                   << IMG_GetError() << std::endl;
     } else {
@@ -54,14 +54,11 @@ bool LTexture::loadFromFile(const std::string &path, SDL_Renderer *sRenderer) {
     }
 
     // Return success
-    return mTexture != NULL;
+    return mTexture != nullptr;
 }
 
-LTexture::LTexture() {
-    // Initialize
-    mTexture = NULL;
-    mWidth = 0;
-    mHeight = 0;
+LTexture::LTexture() : mTexture(nullptr), mWidth(0), mHeight(0) {
+
 }
 
 LTexture::~LTexture() {

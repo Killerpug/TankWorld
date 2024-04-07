@@ -6,6 +6,8 @@
 #define INC_02_SDL_RENDERING_TEXTURE_H
 
 //Screen dimension constants
+#include <SDL2/SDL_render.h>
+
 const int SCREEN_WIDTH = 1080;
 const int SCREEN_HEIGHT = 720;
 

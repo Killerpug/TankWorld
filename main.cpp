@@ -13,8 +13,8 @@ bool init();
 void close();
 
 //The window and what we will be rendering
-SDL_Window *gWindow = NULL;
-SDL_Renderer *gRenderer = NULL;
+SDL_Window *gWindow = nullptr;
+SDL_Renderer *gRenderer = nullptr;
 
 //Start up SDL and create window
 bool init() {
@@ -29,14 +29,14 @@ bool init() {
         }
         gWindow = SDL_CreateWindow("SDL example", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
                                    SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-        if (gWindow == NULL) {
+        if (gWindow == nullptr) {
             cout << "Window could not be created! SDL Error: " << SDL_GetError() << endl;
             result = false;
         } else {
             //Create vsynced renderer for window
             gRenderer = SDL_CreateRenderer(gWindow, -1,
                                            SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-            if (gRenderer == NULL) {
+            if (gRenderer == nullptr) {
                 cout << "Renderer could not be created! SDL Error: " << SDL_GetError() << endl;
                 result = false;
             } else {
@@ -60,8 +60,8 @@ bool init() {
 void close() {
     SDL_DestroyRenderer(gRenderer);
     SDL_DestroyWindow(gWindow);
-    gWindow = NULL;
-    gRenderer = NULL;
+    gWindow = nullptr;
+    gRenderer = nullptr;
     IMG_Quit();
     SDL_Quit();
 }
