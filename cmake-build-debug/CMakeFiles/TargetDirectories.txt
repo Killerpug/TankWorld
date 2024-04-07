@@ -1,3 +1,0 @@
-/home/killer/Pictures/Github/SDL/TankWorld/cmake-build-debug/CMakeFiles/TankWorld.dir
-/home/killer/Pictures/Github/SDL/TankWorld/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/killer/Pictures/Github/SDL/TankWorld/cmake-build-debug/CMakeFiles/rebuild_cache.dir
