@@ -40,7 +40,7 @@ bool LTexture::loadFromFile(const std::string &path, SDL_Renderer *sRenderer) {
     } else {
         // Create texture from surface pixels
         mTexture = SDL_CreateTextureFromSurface(sRenderer, loadedSurface);
-        if (mTexture == NULL) {
+        if (mTexture == nullptr) {
             std::cout << "Unable to create texture from %s! SDL Error: "
                       << path.c_str() << " " << SDL_GetError() << std::endl;
         } else {
