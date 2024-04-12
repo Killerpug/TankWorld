@@ -7,7 +7,8 @@
 
 
 #include <SDL2/SDL.h>
-#include "texture.h"
+#include "../graphics/graphics.h"
+#include "../game/Events.h"
 
 class Player {
 public:
@@ -19,10 +20,10 @@ public:
 
 
     //Maximum axis velocity of the dot
-    static const int PLAYER_SPEED = 5;
+    const int PLAYER_SPEED = 5;
 
 
-    void handleEvent(SDL_Event &e);
+    void handleEvent(Events *events);
 
     void move();
 

@@ -14,43 +14,28 @@ bool Player::loadPlayer(const std::string &texturePath, SDL_Renderer *sRenderer)
 }
 
 //Takes key presses and adjusts the dot's velocity
-void Player::handleEvent(SDL_Event &e) {
-    if (e.type == SDL_KEYDOWN && e.key.repeat == 0) {
-        switch (e.key.keysym.sym) {
-            case SDLK_UP:
-                mVelY -= PLAYER_SPEED;
-                angle = 0;
-                break;
-            case SDLK_DOWN:
-                mVelY += PLAYER_SPEED;
-                angle = 180;
-                break;
-            case SDLK_LEFT:
-                mVelX -= PLAYER_SPEED;
-                angle = 270;
-                break;
-            case SDLK_RIGHT:
-                mVelX += PLAYER_SPEED;
-                angle = 90;
-                break;
-        }
-    } else if (e.type == SDL_KEYUP && e.key.repeat == 0) {
-        switch (e.key.keysym.sym) {
-            case SDLK_UP:
-                mVelY += PLAYER_SPEED;
-                break;
-            case SDLK_DOWN:
-                mVelY -= PLAYER_SPEED;
-                break;
-            case SDLK_LEFT:
-                mVelX += PLAYER_SPEED;
-                break;
-            case SDLK_RIGHT:
-                mVelX -= PLAYER_SPEED;
-                break;
-        }
+void Player::handleEvent(Events *event) {
+
+    if (event->isKeyPressed(SDL_SCANCODE_UP)) {
+        mVelY = -PLAYER_SPEED;
+        mVelX = 0;
+        angle = 0;
+
+    } else if (event->isKeyPressed(SDL_SCANCODE_DOWN)) {
+        mVelY = PLAYER_SPEED;
+        mVelX = 0;
+        angle = 180;
+    } else if (event->isKeyPressed(SDL_SCANCODE_LEFT)) {
+        mVelX = -PLAYER_SPEED;
+        mVelY = 0;
+        angle = 270;
+    } else if (event->isKeyPressed(SDL_SCANCODE_RIGHT)) {
+        mVelX = PLAYER_SPEED;
+        mVelY = 0;
+        angle = 90;
     }
     std::cout << "ball speed: x = " << mVelX << " y = " << mVelY << std::endl;
+
 }
 
 void Player::move() {
