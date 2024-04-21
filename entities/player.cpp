@@ -6,11 +6,12 @@
 #include <iostream>
 
 bool Player::loadPlayer(const std::string &texturePath, SDL_Renderer *sRenderer) {
-    bool success = false;
-    success = playerTexture.loadFromFile(texturePath, sRenderer);
+    if (!playerTexture.loadFromFile(texturePath, sRenderer)) {
+        return false;
+    }
     playerWidth = playerTexture.getWidth();
     playerHeight = playerTexture.getHeight();
-    return success;
+    return true;
 }
 
 //Takes key presses and adjusts the dot's velocity
@@ -20,7 +21,6 @@ void Player::handleEvent(Events *event) {
         mVelY = -PLAYER_SPEED;
         mVelX = 0;
         angle = 0;
-
     } else if (event->isKeyPressed(SDL_SCANCODE_DOWN)) {
         mVelY = PLAYER_SPEED;
         mVelX = 0;

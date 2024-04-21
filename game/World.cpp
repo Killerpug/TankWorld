@@ -9,15 +9,12 @@
 using namespace std;
 
 
-World::World() {
-
+World::World(Graphics *graphics) : gGraphics(graphics) {
 
 }
 
 
 bool World::spawnPlayer() {
-
-
     return true;
 }
 
@@ -36,9 +33,19 @@ bool World::spawnPlayer() {
 }
  * */
 
+bool World::handleEvents() {
+    SDL_Event e;
+    while (SDL_PollEvent(&e) != 0) {
+        //User requests quit
+        if (e.type == SDL_QUIT) {
+        }
+    }
+}
+
+// https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller -> Model View Controller Pattern
+
 void World::gameLoop() {
     //Main loop flag
-    bool quit = false;
     Player player01 = Player{};
     if (!player01.loadPlayer("../res/Gun_07.png", gGraphics->gRenderer)) {
         cout << "Failed to load media " << endl;
@@ -47,18 +54,14 @@ void World::gameLoop() {
     cout << "Player loaded";
     //Event handler
     Events event;
-    spawnPlayer();
-    //Event handler
-    SDL_Event e;
-    //While application is running
-    while (!quit) {
-        //Handle events on queue
-        while (SDL_PollEvent(&e) != 0) {
-            //User requests quit
-            if (e.type == SDL_QUIT) {
-                quit = true;
-            }
+    // TODO: fix spawn player logic
+
+    while (true) {
+        auto shouldExit = handleEvents();
+        if (shouldExit) {
+            break;
         }
+
         //Clear screen
         SDL_SetRenderDrawColor(gGraphics->gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
         SDL_RenderClear(gGraphics->gRenderer);
@@ -74,7 +77,7 @@ void World::gameLoop() {
         for (int i = 0; i < players.size(); i++) {
             players[i].handleEvent(&event);
             players[i].move();
-            players[i].render(gGraphics->gRenderer);
+            players[i].render(gGraphics->gRenderer); // TODO: reverse order, pass player to graphics, Drawable interface
         }
         //Render objects
         SDL_RenderPresent(gGraphics->gRenderer);

@@ -14,17 +14,15 @@
 
 class World {
 public:
-    World();
+    World(Graphics *graphics);
 
     void gameLoop();
 
+private:
+    std::vector<Player> players;
     Graphics *gGraphics;
 
-private:
-
-
-    std::vector<Player> players;
-
+    bool handleEvents();
 
     bool spawnPlayer();
 

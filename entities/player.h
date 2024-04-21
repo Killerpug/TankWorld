@@ -10,6 +10,7 @@
 #include "../graphics/graphics.h"
 #include "../game/Events.h"
 
+//TODO: Implement an interface so that player can send information to graphics, instead of player receiving the graphics.
 class Player {
 public:
     Player();
@@ -40,5 +41,6 @@ private:
 
     LTexture playerTexture;
 };
+
 
 #endif //INC_03_SDL_MOTION_PLAYER_H

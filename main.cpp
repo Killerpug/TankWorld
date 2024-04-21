@@ -12,10 +12,8 @@ using namespace std;
 
 
 int main(int argc, char *args[]) {
-
-    World game;
     Graphics graphics;
-    game.gGraphics = &graphics;
+    World game(&graphics); //iniciar juego con graficos.
     game.gameLoop();
     //Free resources and close SDL
     return 0;

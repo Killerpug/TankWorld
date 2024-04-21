@@ -9,6 +9,7 @@
 #include <SDL2/SDL_render.h>
 #include <SDL2/SDL.h>
 #include <string>
+#include "drawable.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 1080;
@@ -21,13 +22,15 @@ public:
 
     ~Graphics();
 
-//The window and what we will be rendering
+private:
     SDL_Window *gWindow;
     SDL_Renderer *gRenderer;
-private:
+
     bool start();
 
     bool initSDL();
+
+    void render(const Drawable &drawable);
 };
 
 // Texture wrapper class
