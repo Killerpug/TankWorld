@@ -5,8 +5,10 @@
 #include "player.h"
 #include <iostream>
 
-bool Player::loadPlayer(const std::string &texturePath, SDL_Renderer *sRenderer) {
-    if (!playerTexture.loadFromFile(texturePath, sRenderer)) {
+bool Player::loadPlayer(const std::string &texturePath) {
+    texture.createTextureFromFile(texturePath);
+    playerTexture = texture;
+    if (!playerTexture.createTextureFromFile()) {
         return false;
     }
     playerWidth = playerTexture.getWidth();
@@ -52,9 +54,6 @@ void Player::move() {
     }
 }
 
-void Player::render(SDL_Renderer *gRenderer) {
-    playerTexture.render(mPosX, mPosY, angle, nullptr, nullptr, gRenderer);
-}
 
 Player::Player() {
     mPosX = 0;
@@ -63,5 +62,9 @@ Player::Player() {
     mVelY = 0;
     playerWidth = 0;
     playerHeight = 0;
+    playerTexture = nullptr;
 }
+
+
+
 

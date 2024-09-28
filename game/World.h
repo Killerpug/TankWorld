@@ -20,7 +20,7 @@ public:
 
 private:
     std::vector<Player> players;
-    Graphics *gGraphics;
+    Graphics *graphics;
 
     bool handleEvents();
 

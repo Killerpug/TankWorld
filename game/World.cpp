@@ -9,7 +9,7 @@
 using namespace std;
 
 
-World::World(Graphics *graphics) : gGraphics(graphics) {
+World::World(Graphics *graphics) : graphics(graphics) {
 
 }
 
@@ -47,6 +47,7 @@ bool World::handleEvents() {
 void World::gameLoop() {
     //Main loop flag
     Player player01 = Player{};
+    graphics->render(player01.playerTexture, player01.mPosX, player01.mPosY, player01.angle, nullptr, nullptr);
     if (!player01.loadPlayer("../res/Gun_07.png", gGraphics->gRenderer)) {
         cout << "Failed to load media " << endl;
     }
@@ -72,7 +73,7 @@ void World::gameLoop() {
         //player01.move();
         //player01.render(gGraphics->gRenderer);
 
-
+        graphics->render(&player01);
         //Handle input for the player
         for (int i = 0; i < players.size(); i++) {
             players[i].handleEvent(&event);

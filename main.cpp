@@ -8,12 +8,9 @@
 
 using namespace std;
 
-//Frees media and shuts down SDL subsystems
-
-
 int main(int argc, char *args[]) {
     Graphics graphics;
-    World game(&graphics); //iniciar juego con graficos.
+    World game(&graphics);
     game.gameLoop();
     //Free resources and close SDL
     return 0;

@@ -22,39 +22,19 @@ public:
 
     ~Graphics();
 
+    void render(Drawable *drawable, int x, int y, double angle, SDL_Point *center, SDL_Rect *clip);
+    
+
 private:
-    SDL_Window *gWindow;
-    SDL_Renderer *gRenderer;
+    SDL_Window *gameWindow;
+    SDL_Renderer *gameRenderer;
 
     bool start();
 
     bool initSDL();
 
-    void render(const Drawable &drawable);
+
 };
 
-// Texture wrapper class
-class LTexture {
-public:
-    LTexture();
-
-    ~LTexture();
-
-    bool loadFromFile(const std::string &path, SDL_Renderer *sRenderer);
-
-    void free();
-
-    void render(int x, int y, double angle, SDL_Point *center, SDL_Rect *clip, SDL_Renderer *gRenderer);
-
-    int getWidth();
-
-    int getHeight();
-
-private:
-
-    SDL_Texture *mTexture;    // Actual hardware texture
-    int mWidth;
-    int mHeight;
-};
 
 #endif // INC_02_SDL_RENDERING_TEXTURE_H

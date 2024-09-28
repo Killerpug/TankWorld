@@ -15,31 +15,26 @@ class Player {
 public:
     Player();
 
-    bool loadPlayer(const std::string &texturePath, SDL_Renderer *sRenderer);
-
-    //The dimensions of the dot
-
+    bool loadPlayer(const std::string &texturePath);
 
     //Maximum axis velocity of the dot
     const int PLAYER_SPEED = 5;
-
 
     void handleEvent(Events *events);
 
     void move();
 
-    //Shows the dot on the screen
-    void render(SDL_Renderer *gRenderer);
-
-
-private:
-    int playerWidth;
-    int playerHeight;
     int mPosX, mPosY;
     int mVelX, mVelY;
     double angle;
 
-    LTexture playerTexture;
+    Texture *playerTexture;
+private:
+    Texture texture;
+    int playerWidth;
+    int playerHeight;
+
+
 };
 
 
