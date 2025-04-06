@@ -5,13 +5,6 @@
 #include "player.h"
 #include <iostream>
 
-bool Player::loadPlayer(const std::string &texturePath, SDL_Renderer *sRenderer) {
-    bool success = false;
-    success = playerTexture.loadFromFile(texturePath, sRenderer);
-    playerWidth = playerTexture.getWidth();
-    playerHeight = playerTexture.getHeight();
-    return success;
-}
 
 //Takes key presses and adjusts the dot's velocity
 void Player::handleEvent(SDL_Event &e) {
@@ -71,12 +64,13 @@ void Player::render(SDL_Renderer *gRenderer) {
     playerTexture.render(mPosX, mPosY, angle, nullptr, nullptr, gRenderer);
 }
 
-Player::Player() {
+Player::Player(const std::string &texturePath) {
     mPosX = 0;
     mPosY = 0;
     mVelX = 0;
     mVelY = 0;
     playerWidth = 0;
     playerHeight = 0;
+    resourcePath = texturePath;
 }
 

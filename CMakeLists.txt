@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(SDL2 REQUIRED)
 
 add_executable(TankWorld main.cpp
+        graphics.cpp
+        graphics.h
         texture.h
         texture.cpp
         player.cpp

@@ -20,8 +20,7 @@ public:
     LTexture();
 
     ~LTexture();
-
-    bool loadFromFile(const std::string &path, SDL_Renderer *sRenderer);
+    
 
     void free();
 
@@ -31,6 +30,10 @@ public:
     int getWidth();
 
     int getHeight();
+
+    bool setTexture(SDL_Texture *texture);
+
+    SDL_Texture *getTexture();
 
 private:
 

@@ -11,9 +11,8 @@
 
 class Player {
 public:
-    Player();
+    Player(const std::string &texturePath);
 
-    bool loadPlayer(const std::string &texturePath, SDL_Renderer *sRenderer);
 
     //The dimensions of the dot
 
@@ -29,15 +28,18 @@ public:
     //Shows the dot on the screen
     void render(SDL_Renderer *gRenderer);
 
-
-private:
+    LTexture playerTexture;
+    std::string resourcePath;
     int playerWidth;
     int playerHeight;
     int mPosX, mPosY;
+private:
+
+
     int mVelX, mVelY;
     double angle;
 
-    LTexture playerTexture;
+
 };
 
 #endif //INC_03_SDL_MOTION_PLAYER_H

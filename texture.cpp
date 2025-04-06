@@ -29,33 +29,6 @@ void LTexture::free() {
     }
 }
 
-bool LTexture::loadFromFile(const std::string &path, SDL_Renderer *sRenderer) {
-    free();                             // Get rid of preexisting texture
-
-    // Load image
-    SDL_Surface *loadedSurface = IMG_Load(path.c_str());
-    if (loadedSurface == nullptr) {
-        std::cout << "Unable to load image %s! SDL_image Error: " << path.c_str() << " "
-                  << IMG_GetError() << std::endl;
-    } else {
-        // Create texture from surface pixels
-        mTexture = SDL_CreateTextureFromSurface(sRenderer, loadedSurface);
-        if (mTexture == nullptr) {
-            std::cout << "Unable to create texture from %s! SDL Error: "
-                      << path.c_str() << " " << SDL_GetError() << std::endl;
-        } else {
-            // Get image dimensions
-            mWidth = loadedSurface->w;
-            mHeight = loadedSurface->h;
-        }
-
-        // Get rid of old loaded surface
-        SDL_FreeSurface(loadedSurface);
-    }
-
-    // Return success
-    return mTexture != nullptr;
-}
 
 LTexture::LTexture() : mTexture(nullptr), mWidth(0), mHeight(0) {
 
@@ -63,4 +36,14 @@ LTexture::LTexture() : mTexture(nullptr), mWidth(0), mHeight(0) {
 
 LTexture::~LTexture() {
     free();
+}
+
+bool LTexture::setTexture(SDL_Texture *texture) {
+    mTexture = texture;
+    return true;
+
+}
+
+SDL_Texture *LTexture::getTexture() {
+    return mTexture;
 }
