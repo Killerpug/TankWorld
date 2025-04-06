@@ -14,9 +14,16 @@ public:
 
     ~Graphics();
 
-    void render(Drawable &object, int x, int y, double angle, SDL_Point *center, SDL_Rect *clip);
-
+/*
+ * Creates the texture from the image provided in the source path of the drawable object.
+ */
     bool createObject(Drawable &object);
+
+/*
+ * renders the object in the screen.
+ * pre-requirements: object must be initialized using createObject
+ */
+    void renderObject(Drawable &object, int x, int y, double angle, SDL_Point *center, SDL_Rect *clip);
 
 
     SDL_Window *gameWindow;
@@ -25,6 +32,8 @@ public:
 private:
     bool start();
 
+
 };
 
 #endif // GRAPHICS_H
+

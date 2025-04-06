@@ -74,7 +74,7 @@ bool Graphics::createObject(Drawable &object) {
 }
 
 
-void Graphics::render(Drawable &object, int x, int y, double angle, SDL_Point *center, SDL_Rect *clip) {
+void Graphics::renderObject(Drawable &object, int x, int y, double angle, SDL_Point *center, SDL_Rect *clip) {
     SDL_RendererFlip flip = SDL_FLIP_NONE;
     SDL_Rect renderQuad = {x, y, object.getWidth(), object.getHeight()};
     SDL_RenderCopyEx(gameRenderer, object.getTexture(), nullptr, &renderQuad, angle, nullptr, flip);

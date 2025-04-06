@@ -7,7 +7,7 @@
 #include <iostream>
 
 
-void LTexture::free() {
+void Texture::free() {
     // Free texture if it exists
     if (mTexture != nullptr) {
         SDL_DestroyTexture(mTexture);
@@ -18,48 +18,45 @@ void LTexture::free() {
 }
 
 
-LTexture::LTexture() : mTexture(nullptr), mWidth(0), mHeight(0) {
+Texture::Texture(const std::string &texturePath) : mResourcePath(texturePath), mTexture(nullptr), mWidth(0), mHeight(0) {
 
 }
 
-LTexture::~LTexture() {
+Texture::~Texture() {
     free();
 }
 
-const int LTexture::getWidth() { return mWidth; }
+const int Texture::getWidth() { return mWidth; }
 
-const int LTexture::getHeight() { return mHeight; }
+const int Texture::getHeight() { return mHeight; }
 
-SDL_Texture *LTexture::getTexture() {
+SDL_Texture *Texture::getTexture() {
     return mTexture;
 }
 
-std::string LTexture::getResourcePath() {
+std::string Texture::getResourcePath() {
     return mResourcePath;
 }
 
-bool LTexture::setWidth(int width) {
+bool Texture::setWidth(int width) {
     mWidth = width;
     return true;
 }
 
-bool LTexture::setHeight(int height) {
+bool Texture::setHeight(int height) {
     mHeight = height;
     return true;
 }
 
-bool LTexture::setTexture(SDL_Texture *texture) {
+bool Texture::setTexture(SDL_Texture *texture) {
     mTexture = texture;
     return true;
 
 }
 
 
-bool LTexture::setResourcePath(const std::string &resourcePath) {
+bool Texture::setResourcePath(const std::string &resourcePath) {
     mResourcePath = resourcePath;
     return true;
 }
-
-
-
 

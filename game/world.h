@@ -8,8 +8,9 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <iostream>
-#include "../graphics/graphics.h"
+
 #include <vector>
+#include "../graphics/graphics.h"
 #include "../entities/player.h"
 
 

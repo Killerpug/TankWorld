@@ -15,18 +15,22 @@ void Player::handleEvent(SDL_Event &e) {
         switch (e.key.keysym.sym) {
             case SDLK_UP:
                 mVelY -= PLAYER_SPEED;
+                mVelX = 0;
                 angle = 0;
                 break;
             case SDLK_DOWN:
                 mVelY += PLAYER_SPEED;
+                mVelX = 0;
                 angle = 180;
                 break;
             case SDLK_LEFT:
                 mVelX -= PLAYER_SPEED;
+                mVelY = 0;
                 angle = 270;
                 break;
             case SDLK_RIGHT:
                 mVelX += PLAYER_SPEED;
+                mVelY = 0;
                 angle = 90;
                 break;
         }
@@ -65,12 +69,11 @@ void Player::move() {
 }
 
 
-Player::Player(const std::string &texturePath) {
+Player::Player(const std::string &texturePath) : playerTexture(texturePath) {
     mPosX = 0;
     mPosY = 0;
     mVelX = 0;
     mVelY = 0;
-    resourcePath = texturePath;
-    playerTexture.setResourcePath(texturePath);
+
 }
 

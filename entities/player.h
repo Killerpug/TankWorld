@@ -21,15 +21,13 @@ public:
 
     void move();
 
-    LTexture playerTexture;
-    std::string resourcePath;
+    Texture playerTexture;
     int mPosX, mPosY;
-
+    double angle;
 private:
 
 
     int mVelX, mVelY;
-    double angle;
 
 
 };

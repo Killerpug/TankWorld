@@ -14,11 +14,11 @@
 #include "drawable.h"
 
 // Texture wrapper class
-class LTexture : public Drawable {
+class Texture : public Drawable {
 public:
-    LTexture();
+    Texture(const std::string &texturePath);
 
-    ~LTexture();
+    ~Texture();
 
     void free();
 
@@ -36,6 +36,9 @@ public:
 
     bool setTexture(SDL_Texture *texture) override;
 
+/*
+ * select a new sprite for the texture
+ */
     bool setResourcePath(const std::string &resourcePath);
 
 private:
