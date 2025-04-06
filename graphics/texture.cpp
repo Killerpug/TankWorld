@@ -30,6 +30,16 @@ LTexture::~LTexture() {
     free();
 }
 
+bool LTexture::setWidth(int width) {
+    mWidth = width;
+    return true;
+}
+
+bool LTexture::setHeight(int height) {
+    mHeight = height;
+    return true;
+}
+
 bool LTexture::setTexture(SDL_Texture *texture) {
     mTexture = texture;
     return true;
@@ -39,3 +49,5 @@ bool LTexture::setTexture(SDL_Texture *texture) {
 SDL_Texture *LTexture::getTexture() {
     return mTexture;
 }
+
+

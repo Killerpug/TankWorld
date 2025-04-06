@@ -55,11 +55,11 @@ void Player::move() {
     //If the dot went too far
     //Move back
     mPosY += mVelY;
-    if ((mPosY < 0) || (mPosY + playerHeight > SCREEN_HEIGHT)) {
+    if ((mPosY < 0) || (mPosY + playerTexture.getHeight() > SCREEN_HEIGHT)) {
         mPosY -= mVelY;
     }
     mPosX += mVelX;
-    if ((mPosX < 0) || (mPosX + playerWidth > SCREEN_WIDTH)) {
+    if ((mPosX < 0) || (mPosX + playerTexture.getWidth() > SCREEN_WIDTH)) {
         mPosX -= mVelX;
     }
 }
@@ -70,8 +70,6 @@ Player::Player(const std::string &texturePath) {
     mPosY = 0;
     mVelX = 0;
     mVelY = 0;
-    playerWidth = 0;
-    playerHeight = 0;
     resourcePath = texturePath;
 }
 

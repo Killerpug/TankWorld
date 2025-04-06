@@ -25,9 +25,14 @@ public:
 
     int getHeight();
 
+    SDL_Texture *getTexture();
+
+    bool setWidth(int width);
+
+    bool setHeight(int height);
+
     bool setTexture(SDL_Texture *texture);
 
-    SDL_Texture *getTexture();
 
 private:
 

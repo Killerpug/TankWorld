@@ -13,10 +13,6 @@ class Player {
 public:
     Player(const std::string &texturePath);
 
-
-    //The dimensions of the dot
-
-
     //Maximum axis velocity of the dot
     static const int PLAYER_SPEED = 5;
 
@@ -25,13 +21,8 @@ public:
 
     void move();
 
-    //Shows the dot on the screen
-    void render(SDL_Renderer *gRenderer);
-
     LTexture playerTexture;
     std::string resourcePath;
-    int playerWidth;
-    int playerHeight;
     int mPosX, mPosY;
 private:
 

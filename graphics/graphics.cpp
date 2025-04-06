@@ -61,8 +61,8 @@ bool Graphics::createObject(Player &player) {
                       << player.resourcePath.c_str() << " " << SDL_GetError() << std::endl;
         } else {
             // Get image dimensions
-            player.playerWidth = loadedSurface->w;
-            player.playerHeight = loadedSurface->h;
+            player.playerTexture.setWidth(loadedSurface->w);
+            player.playerTexture.setHeight(loadedSurface->h);
         }
 
         // Get rid of old loaded surface
@@ -76,6 +76,6 @@ bool Graphics::createObject(Player &player) {
 
 void Graphics::render(Player &player, int x, int y, double angle, SDL_Point *center, SDL_Rect *clip) {
     SDL_RendererFlip flip = SDL_FLIP_NONE;
-    SDL_Rect renderQuad = {x, y, player.playerWidth, player.playerHeight};
+    SDL_Rect renderQuad = {x, y, player.playerTexture.getWidth(), player.playerTexture.getHeight()};
     SDL_RenderCopyEx(gameRenderer, player.playerTexture.getTexture(), nullptr, &renderQuad, angle, nullptr, flip);
 }

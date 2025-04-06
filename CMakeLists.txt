@@ -13,7 +13,9 @@ add_executable(TankWorld main.cpp
         entities/player.cpp
         entities/player.h
         game/world.cpp
-        game/world.h)
+        game/world.h
+        graphics/drawable.h
+)
 
 
 target_link_libraries(TankWorld SDL2 SDL2_image)
