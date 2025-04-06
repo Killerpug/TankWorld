@@ -24,6 +24,7 @@ public:
     LTexture playerTexture;
     std::string resourcePath;
     int mPosX, mPosY;
+
 private:
 
 

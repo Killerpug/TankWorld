@@ -46,23 +46,23 @@ Graphics::~Graphics() {
     SDL_Quit();
 }
 
-bool Graphics::createObject(Player &player) {
+bool Graphics::createObject(Drawable &object) {
 
     // Load image
-    SDL_Surface *loadedSurface = IMG_Load(player.resourcePath.c_str());
+    SDL_Surface *loadedSurface = IMG_Load(object.getResourcePath().c_str());
     if (loadedSurface == nullptr) {
-        std::cout << "Unable to load image %s! SDL_image Error: " << player.resourcePath.c_str() << " "
+        std::cout << "Unable to load image %s! SDL_image Error: " << object.getResourcePath().c_str() << " "
                   << IMG_GetError() << std::endl;
     } else {
         // Create texture from surface pixels
-        player.playerTexture.setTexture(SDL_CreateTextureFromSurface(gameRenderer, loadedSurface));
-        if (player.playerTexture.getTexture() == nullptr) {
+        object.setTexture(SDL_CreateTextureFromSurface(gameRenderer, loadedSurface));
+        if (object.getTexture() == nullptr) {
             std::cout << "Unable to create texture from %s! SDL Error: "
-                      << player.resourcePath.c_str() << " " << SDL_GetError() << std::endl;
+                      << object.getResourcePath().c_str() << " " << SDL_GetError() << std::endl;
         } else {
             // Get image dimensions
-            player.playerTexture.setWidth(loadedSurface->w);
-            player.playerTexture.setHeight(loadedSurface->h);
+            object.setWidth(loadedSurface->w);
+            object.setHeight(loadedSurface->h);
         }
 
         // Get rid of old loaded surface
@@ -70,12 +70,12 @@ bool Graphics::createObject(Player &player) {
     }
 
     // Return success
-    return player.playerTexture.getTexture() != nullptr;
+    return object.getTexture() != nullptr;
 }
 
 
-void Graphics::render(Player &player, int x, int y, double angle, SDL_Point *center, SDL_Rect *clip) {
+void Graphics::render(Drawable &object, int x, int y, double angle, SDL_Point *center, SDL_Rect *clip) {
     SDL_RendererFlip flip = SDL_FLIP_NONE;
-    SDL_Rect renderQuad = {x, y, player.playerTexture.getWidth(), player.playerTexture.getHeight()};
-    SDL_RenderCopyEx(gameRenderer, player.playerTexture.getTexture(), nullptr, &renderQuad, angle, nullptr, flip);
+    SDL_Rect renderQuad = {x, y, object.getWidth(), object.getHeight()};
+    SDL_RenderCopyEx(gameRenderer, object.getTexture(), nullptr, &renderQuad, angle, nullptr, flip);
 }

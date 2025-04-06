@@ -71,5 +71,6 @@ Player::Player(const std::string &texturePath) {
     mVelX = 0;
     mVelY = 0;
     resourcePath = texturePath;
+    playerTexture.setResourcePath(texturePath);
 }
 

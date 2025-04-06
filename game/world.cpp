@@ -20,7 +20,7 @@ void World::gameLoop() {
 
     Player player01("../res/Gun_07.png");
 
-    if (!graphics->createObject(player01)) {
+    if (!graphics->createObject(player01.playerTexture)) {
         cout << "Failed to load media " << endl;
     } else {
         //Main loop flag
@@ -50,7 +50,7 @@ void World::gameLoop() {
             SDL_RenderClear(graphics->gameRenderer);
 
             //Render objects
-            graphics->render(player01, player01.mPosX, player01.mPosY, 0, nullptr, nullptr);
+            graphics->render(player01.playerTexture, player01.mPosX, player01.mPosY, 0, nullptr, nullptr);
 
             //Update screen
             SDL_RenderPresent(graphics->gameRenderer);

@@ -6,6 +6,7 @@
 #include "../entities/player.h"
 #include <SDL2/SDL_image.h>
 #include <iostream>
+#include "drawable.h"
 
 class Graphics {
 public:
@@ -13,9 +14,9 @@ public:
 
     ~Graphics();
 
-    void render(Player &player, int x, int y, double angle, SDL_Point *center, SDL_Rect *clip);
+    void render(Drawable &object, int x, int y, double angle, SDL_Point *center, SDL_Rect *clip);
 
-    bool createObject(Player &player);
+    bool createObject(Drawable &object);
 
 
     SDL_Window *gameWindow;

@@ -6,10 +6,6 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
-int LTexture::getWidth() { return mWidth; }
-
-int LTexture::getHeight() { return mHeight; }
-
 
 void LTexture::free() {
     // Free texture if it exists
@@ -30,6 +26,18 @@ LTexture::~LTexture() {
     free();
 }
 
+const int LTexture::getWidth() { return mWidth; }
+
+const int LTexture::getHeight() { return mHeight; }
+
+SDL_Texture *LTexture::getTexture() {
+    return mTexture;
+}
+
+std::string LTexture::getResourcePath() {
+    return mResourcePath;
+}
+
 bool LTexture::setWidth(int width) {
     mWidth = width;
     return true;
@@ -46,8 +54,12 @@ bool LTexture::setTexture(SDL_Texture *texture) {
 
 }
 
-SDL_Texture *LTexture::getTexture() {
-    return mTexture;
+
+bool LTexture::setResourcePath(const std::string &resourcePath) {
+    mResourcePath = resourcePath;
+    return true;
 }
+
+
 
 
