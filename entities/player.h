@@ -2,12 +2,12 @@
 // Created by killer on 15/03/24.
 //
 
-#ifndef INC_03_SDL_MOTION_PLAYER_H
-#define INC_03_SDL_MOTION_PLAYER_H
+#ifndef PLAYER_H
+#define PLAYER_H
 
 
 #include <SDL2/SDL.h>
-#include "texture.h"
+#include "../graphics/texture.h"
 
 class Player {
 public:
@@ -42,4 +42,4 @@ private:
 
 };
 
-#endif //INC_03_SDL_MOTION_PLAYER_H
+#endif

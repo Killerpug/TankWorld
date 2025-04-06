@@ -5,9 +5,12 @@
 #include "player.h"
 #include <iostream>
 
+const int SCREEN_WIDTH = 1080;
+const int SCREEN_HEIGHT = 720;
 
 //Takes key presses and adjusts the dot's velocity
 void Player::handleEvent(SDL_Event &e) {
+    // do action
     if (e.type == SDL_KEYDOWN && e.key.repeat == 0) {
         switch (e.key.keysym.sym) {
             case SDLK_UP:
@@ -27,7 +30,8 @@ void Player::handleEvent(SDL_Event &e) {
                 angle = 90;
                 break;
         }
-    } else if (e.type == SDL_KEYUP && e.key.repeat == 0) {
+    } // cancel action
+    else if (e.type == SDL_KEYUP && e.key.repeat == 0) {
         switch (e.key.keysym.sym) {
             case SDLK_UP:
                 mVelY += PLAYER_SPEED;
@@ -60,9 +64,6 @@ void Player::move() {
     }
 }
 
-void Player::render(SDL_Renderer *gRenderer) {
-    playerTexture.render(mPosX, mPosY, angle, nullptr, nullptr, gRenderer);
-}
 
 Player::Player(const std::string &texturePath) {
     mPosX = 0;

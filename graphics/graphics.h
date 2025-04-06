@@ -3,11 +3,9 @@
 
 #include <SDL2/SDL.h>
 #include <string>
-#include "player.h"
+#include "../entities/player.h"
 #include <SDL2/SDL_image.h>
 #include <iostream>
-
-class Drawable; // Forward declaration
 
 class Graphics {
 public:
@@ -19,15 +17,12 @@ public:
 
     bool createObject(Player &player);
 
-    bool start();
 
-    bool initSDL();
-    
     SDL_Window *gameWindow;
     SDL_Renderer *gameRenderer;
 
 private:
-
+    bool start();
 
 };
 
